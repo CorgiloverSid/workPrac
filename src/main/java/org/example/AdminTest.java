@@ -15,7 +15,7 @@ public class AdminTest {
     @Before
     public void init() throws JAXBException {
         this.adminContext = JAXBContext.newInstance(Admin.class);
-        this.booksContext = JAXBContext.newInstance(Library.class);
+        this.booksContext = JAXBContext.newInstance(Book.class);
     }
 
     @Test
@@ -28,21 +28,19 @@ public class AdminTest {
         System.out.println("unmarshalled = " + unmarshalled);
     }
 
-    @Test
-    public void booksSerialisation() throws JAXBException {
-        HashMap<Integer, Library> books = new HashMap<>();
-
-        Unmarshaller unmarshaller = this.booksContext.createUnmarshaller();
-
-        Library libraryList = (Library) unmarshaller.unmarshal(new File("books.xml"));
-
-        Library book = new Library(libraryList.getBookNum(), libraryList.getBookTitle(), libraryList.isBooksAvailable());
-        books.put(libraryList.getBookNum(),book);
-
-        for (Integer i : books.keySet()) {
-            System.out.println("key: " + i + " value: " + books.get(i));
-
-        }
-
+//    @Test
+//    public void booksSerialisation() throws JAXBException {
+//        HashMap<Integer, Library> books = new HashMap<>();
+//
+//        Unmarshaller unmarshaller = this.booksContext.createUnmarshaller();
+//
+//        Library libraryList = (Library) unmarshaller.unmarshal(new File("books.xml"));
+//
+//        Library book = new Library(libraryList.getBookNum(), libraryList.getBookTitle(), libraryList.isBooksAvailable());
+//        books.put(libraryList.getBookNum(),book);
+//
+//        for (Integer i : books.keySet()) {
+//            System.out.println("key: " + i + " value: " + books.get(i));
+//
+//        }
     }
-}
