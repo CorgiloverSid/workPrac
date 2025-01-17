@@ -5,18 +5,18 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class User {
-    private String name;
+    private String userName;
     private String email;
     private int age;
 
-    public User(String name, String email, int age) {
-        this.name = name;
+    public User(String userName, String email, int age) {
+        this.userName = userName;
         this.email = email;
         this.age = age;
     }
 
     public String toString() {
-        return this.name + " " + this.email + " " + this.age;
+        return this.userName + " " + this.email + " " + this.age;
     }
 
     public void createUser() {
@@ -31,14 +31,15 @@ public class User {
         int userAge = libUser.nextInt();
 
         System.out.println("Your age is " + userAge);
+
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String name) {
+        this.userName = name;
     }
 
     public String getEmail() {

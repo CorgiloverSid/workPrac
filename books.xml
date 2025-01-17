@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><library>
+    <bookNum>1</bookNum>
+    <bookTitle>Harry Potter book 1</bookTitle>
+    <booksAvailable>false</booksAvailable>
+
+    <bookNum>2</bookNum>
+    <bookTitle>Harry Potter book 2</bookTitle>
+    <booksAvailable>true</booksAvailable>
+
+    <bookNum>3</bookNum>
+    <bookTitle>Harry Potter book 3</bookTitle>
+    <booksAvailable>false</booksAvailable>
+
+    <bookNum>4</bookNum>
+    <bookTitle>Harry Potter book 4</bookTitle>
+    <booksAvailable>true</booksAvailable>
+
+    <bookNum>5</bookNum>
+    <bookTitle>Harry Potter book 5</bookTitle>
+    <booksAvailable>false</booksAvailable>
+
+</library>
