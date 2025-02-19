@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <library>
-    <bookInfo>
+    <bookInfo2>
         <entry>
             <key>1</key>
             <value>
@@ -17,5 +17,5 @@
                 <bookAvailable>true</bookAvailable>
             </value>
         </entry>
-    </bookInfo>
+    </bookInfo2>
 </library>

@@ -54,6 +54,7 @@ class Main {
 //
 //        }
         HashMap<Integer, Book> books = new HashMap<>();
+
         Book book1 = new Book();
         book1.setBookNum(1);
         book1.setBookTitle("Harry");
@@ -74,8 +75,6 @@ class Main {
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-//        jaxbMarshaller.marshal(library, System.out);
         jaxbMarshaller.marshal(library, new File("books.xml"));
 
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
