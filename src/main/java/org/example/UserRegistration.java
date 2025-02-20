@@ -52,19 +52,19 @@ public class UserRegistration extends HttpServlet {
 
         if (user==null) {
             res.setStatus(400);
-            res.sendError(400, properties.getProperty("allErrorMessage1"));
+            res.sendError(400, properties.getProperty("bodyEmpty"));
 
         } else if (userName.isEmpty() && userPassword.isEmpty()) {
             res.setStatus(400);
-            res.sendError(400, "Bad request, please enter username and password");
+            res.sendError(400, (String) properties.get("userAndPassEmpty"));
 
         } else if (userName.isEmpty()) {
             res.setStatus(400);
-            res.sendError(400, "Bad request, please enter username");
+            res.sendError(400, (String) properties.get("userNameEmpty"));
 
         } else if (userPassword.isEmpty()) {
             res.setStatus(400);
-            res.sendError(400, "Bad request, please enter password");
+            res.sendError(400, (String) properties.get("passEmpty"));
 
         } else {
             PrintWriter out = res.getWriter();
