@@ -37,15 +37,8 @@ public class UserRegistration extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-
-//        JSONObject jsonDoc = (JSONObject) JSONValue.parse(new FileReader("registeredUsers.json"));
-//        String usrName = req.getParameter("userName");
-//        String usrPass = req.getParameter("userPassword");
-//        if (usrName == null && usrPass == null) {
         ObjectMapper mapper = new ObjectMapper();
         User user = mapper.readValue(req.getInputStream(),User.class);
-       /* String x = IOUtils.toString(req.getReader());
-        JSONObject obj = new JSONObject(x);*/
 
         String userName = user.getUserName();
         String userPassword = user.getUserPassword();
@@ -69,28 +62,28 @@ public class UserRegistration extends HttpServlet {
         } else {
             PrintWriter out = res.getWriter();
 
-            if (!userExists(userName) ) {
-                if( isValidPassword(userPassword)){
-                    out.write("Created successfully!" + " " + "Username: " + userName + " " + "Password: " + userPassword);
-                    res.setStatus(200);
-                    addUsers(user);
-                }else{
+    if (!userExists(userName)) {
+        if (isValidPassword(userPassword)) {
+            out.write("Created successfully!" + " " + "Username: " + userName + " " + "Password: " + userPassword);
+            res.setStatus(200);
+            addUsers(user);
+        } else {
 
-                    out.write((String) properties.get("passConformMessage"));
-                    res.setStatus(400);
-                    res.sendError(400, properties.get("passConformMessage") +
-                            "");
-                }
-            }
-            else{
-                    res.setStatus(400);
-            res.sendError(400, "User Already Exists!! ");
-            }
+            out.write((String) properties.get("passConformMessage"));
+            res.setStatus(400);
+            res.sendError(400, properties.get("passConformMessage") +
+                    "");
+        }
+    } else {
+        res.setStatus(400);
+        res.sendError(400, (String) properties.get("userExist"));
+    }
+
         }
     }
 
     public static boolean userExists(String userName) {
-        File reader = new File((String) properties.get("registeredUsersJSON"));
+        File reader = new File((String) properties.get("registeredUsersPath"));
 
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -107,7 +100,7 @@ public class UserRegistration extends HttpServlet {
     }
 
     private void addUsers(User user) {
-        File file = new File((String) properties.get("registeredUsersJSON"));
+        File file = new File((String) properties.get("registeredUsersPath"));
 
         try {
             ObjectMapper mapper = new ObjectMapper();
